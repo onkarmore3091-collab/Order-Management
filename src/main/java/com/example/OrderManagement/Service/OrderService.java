@@ -22,10 +22,21 @@ public class OrderService {
         else{
             double v=o.getPrice() * o.getQuantity();
             o.setTotal(v);
-
-            if(v>1000){
-                double discount=v*0.10;
-                double fAmount=v-discount;
+            double discount;
+            double fAmount;
+            if(v>=10000){
+                 discount=v*0.20;
+                 fAmount=v-discount;
+                 o.setFinalAmount(fAmount);
+            }
+            else if(v>=5000){
+                discount=v*0.15;
+                fAmount=v-discount;
+                o.setFinalAmount(fAmount);
+            }
+            else if(v>=2000){
+                discount=v*0.10;
+                fAmount=v-discount;
                 o.setFinalAmount(fAmount);
             }
             else{
